@@ -1,0 +1,7 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import 'select2/dist/css/select2.css';
+@import 'jquery-modal/jquery.modal.css';
+
+@import 'my_custom.css';
