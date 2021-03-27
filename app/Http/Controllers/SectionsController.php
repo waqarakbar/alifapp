@@ -86,4 +86,12 @@ class SectionsController extends Controller
         return redirect(route('sections.all-sections'));
 
     }
+
+
+
+    public function sectionsByGradeId(Request $request){
+        $grade_id = $request->get('grade_id');
+
+        return Section::where('applying_grade_id', $grade_id)->pluck('title', 'id');
+    }
 }

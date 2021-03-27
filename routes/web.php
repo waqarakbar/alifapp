@@ -80,6 +80,8 @@ Route::middleware(['auth'])->prefix('alifapp')->group(function(){
 
         Route::get('delete/{id}', [SectionsController::class, 'deleteSection'])->name('sections.delete');
 
+        Route::post('sections-by-grade-id', [SectionsController::class, 'sectionsByGradeId'])->name('sections.sections-by-grade-id');
+
     });
 
 

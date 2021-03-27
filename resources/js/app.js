@@ -10,5 +10,4 @@ require('datatables.net-dt');
 require('jquery-modal')
 require('print-this')
 require('inputmask')
-require('awesome-notifications');
-
+window.chart = require('chart.js');

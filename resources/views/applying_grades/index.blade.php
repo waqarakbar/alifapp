@@ -39,7 +39,7 @@
                     <div class="b-order b-order-red-800 grid grid-cols-1 overflow-y-auto">
 
 
-                        <table class="table-fixed border-collapse b-order border-gray-400 text-sm w-full" id="myTable">
+                        <table class="border-collapse b-order border-gray-400 text-xs w-full" id="myTable">
 
                             <thead>
                             <tr>
@@ -52,8 +52,9 @@
 
 
                             <tbody>
+                            @php $bg = '' @endphp
                             @foreach($grades as $ap)
-                            <tr>
+                            <tr class="border-b border-gray-200 {{ $bg }} hover:bg-gray-100">
                                 <td class="p-2 border border-gray-300">{{ $loop->iteration }}</td>
                                 <td class="p-2 border border-gray-300">{{ $ap->title }}</td>
                                 <td class="p-2 border border-gray-300">{{ $ap->sections->count() }}</td>
@@ -69,6 +70,7 @@
                                     </a>
                                 </td>
                             </tr>
+                            @php $bg = ($bg == '') ? 'bg-gray-50' : '' @endphp
                             @endforeach
 
 

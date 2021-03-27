@@ -4,7 +4,7 @@
             $(".select2").select2();
 
             // get districts by province
-            $(document).on('change', '.province_list', function(){
+            $(document).on('change', '.province_list', function () {
                 var p = $(this);
                 var d = p.closest(".grid").find('.district_list');
                 // console.log(p.val())
@@ -15,16 +15,42 @@
                         province_id: p.val(),
                         _token: '{{ csrf_token() }}'
                     },
-                    success: function(res){
+                    success: function (res) {
                         var options = "<option>Select a district</option>";
-                        $.each(res, function(i, j){
-                            options += "<option value='"+i+"'>"+j+"</option>";
+                        $.each(res, function (i, j) {
+                            options += "<option value='" + i + "'>" + j + "</option>";
                         });
                         d.html(options)
                     }
                 })
 
             });
+
+
+            $(document).on('change', '#applying_grade_id', function () {
+                var g = $(this).val();
+                $.ajax({
+                    type: 'post',
+                    url: '{{ route('sections.sections-by-grade-id') }}',
+                    data: {
+                        grade_id: g,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function (res) {
+
+                        /*g.removeClass('col-span-2');
+                        $(".section_cont").show()*/
+
+                        var options = "<option>Select a section</option>";
+                        $.each(res, function (i, j) {
+                            options += "<option value='" + i + "'>" + j + "</option>";
+                        });
+                        $("#section_id").html(options)
+
+                    }
+                })
+            });
+
 
             var cnic_im = new Inputmask("99999-9999999-9");
             cnic_im.mask(document.getElementById("father_cnic"));
@@ -38,9 +64,7 @@
             mobile_im.mask(document.getElementById("eme_cell_phone"));
 
 
-
         });
-
 
 
     </script>
@@ -67,8 +91,10 @@
 
 
                         <div class="text-right text-sm">
-                            <a href="{{ route('dashboard') }}" class="text-blue-600">Dashboard</a> <i class="fa fa-chevron-right"></i>
-                            <a href="{{ route('applicant.list') }}" class="text-blue-600">All Applicants</a> <i class="fa fa-chevron-right"></i>
+                            <a href="{{ route('dashboard') }}" class="text-blue-600">Dashboard</a> <i
+                                class="fa fa-chevron-right"></i>
+                            <a href="{{ route('applicant.list') }}" class="text-blue-600">All Applicants</a> <i
+                                class="fa fa-chevron-right"></i>
                             New Applicant
                         </div>
 
@@ -78,7 +104,8 @@
                     {!! Form::model($applicant, ['url' => route('applicant.save'), 'type' => 'post']) !!}
 
                     @if($applicant->exists)
-                        <input type="hidden" name="id" value="{{ \Illuminate\Support\Facades\Crypt::encrypt($applicant->id) }}">
+                        <input type="hidden" name="id"
+                               value="{{ \Illuminate\Support\Facades\Crypt::encrypt($applicant->id) }}">
                     @endif
 
                     <div class="grid md:grid-cols-2 gap-4">
@@ -86,7 +113,7 @@
 
                         <div>
 
-                            <div class="grid md:grid-cols-1  gap-4">
+                            <div class="grid md:grid-cols-2  gap-4">
 
                                 {{--<div class="">
                                     {!! Form::label('form_number', 'Form Number ', ['class' => '']) !!}
@@ -96,11 +123,19 @@
                                 </div>--}}
 
 
-                                <div class="">
+                                <div class="applying_grade_cont">
                                     {!! Form::label('applying_grade_id', 'Applying Grade ', ['class' => 'req']) !!}
                                     <span
                                         class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('applying_grade_id') !!} @endif</span>
                                     {!! Form::select('applying_grade_id', [null=>'Select Applying Grade']+$applying_grades, NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'applying_grade_id', 'required' => 'required']) !!}
+                                </div>
+
+
+                                <div class="section_cont">
+                                    {!! Form::label('section_id', 'Select Section ', ['class' => '']) !!}
+                                    <span
+                                        class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('section_id') !!} @endif</span>
+                                    {!! Form::select('section_id', [null=>'Select Section']+$sections, NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'section_id']) !!}
                                 </div>
 
                             </div>
@@ -117,7 +152,6 @@
 
 
                     </div>
-
 
 
                     <div class="grid md:grid-cols-2 gap-4 mt-5">
@@ -150,7 +184,6 @@
                         </div>
 
                     </div>
-
 
 
                     <div class="grid md:grid-cols-4 gap-4 mt-5">
@@ -187,7 +220,6 @@
                         </div>--}}
 
                     </div>
-
 
 
                     <div class="grid md:grid-cols-2 gap-4 mt-5">
@@ -228,9 +260,7 @@
                         </div>
 
 
-
                     </div>
-
 
 
                     <div class="grid md:grid-cols-4 gap-4 mt-5">
@@ -286,7 +316,6 @@
                         <h2 class="text-lg font-bold">Father's / Guardian's Information</h2>
                         <hr>
                     </div>
-
 
 
                     <div class="grid md:grid-cols-4 gap-4 mt-5">
@@ -385,7 +414,6 @@
                         </div>
 
 
-
                     </div>
 
 
@@ -438,13 +466,10 @@
                     </div>
 
 
-
-
                     <div class="grid md:grid-cols-1 gap-4 mt-10">
                         <h2 class="text-lg font-bold">Mother's Information</h2>
                         <hr>
                     </div>
-
 
 
                     <div class="grid md:grid-cols-4 gap-4 mt-5">
@@ -543,7 +568,6 @@
                         </div>
 
 
-
                     </div>
 
 
@@ -596,13 +620,10 @@
                     </div>
 
 
-
-
                     <div class="grid md:grid-cols-1 gap-4 mt-10">
                         <h2 class="text-lg font-bold">Emergency Contact Information</h2>
                         <hr>
                     </div>
-
 
 
                     <div class="grid md:grid-cols-4 gap-4 mt-5">
@@ -701,7 +722,6 @@
                         </div>
 
 
-
                     </div>
 
 
@@ -754,14 +774,15 @@
                     </div>
 
 
-
                     <div class="grid md:grid-cols-1 gap-4 mt-10">
                         <div>
-                            <button type="submit" class="py-3 px-4 bg-green-500 text-white shadow-md hover:bg-green-600 mr-2">
+                            <button type="submit"
+                                    class="py-3 px-4 bg-green-500 text-white shadow-md hover:bg-green-600 mr-2">
                                 <i class="fa fa-save"></i> Save Applicant
                             </button>
 
-                            <button type="submit" class="py-3 px-4 bg-yellow-500 text-white shadow-md hover:bg-yellow-600">
+                            <button type="submit"
+                                    class="py-3 px-4 bg-yellow-500 text-white shadow-md hover:bg-yellow-600">
                                 <i class="fa fa-undo"></i> Reset
                             </button>
 

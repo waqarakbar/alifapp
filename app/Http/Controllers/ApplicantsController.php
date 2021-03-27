@@ -8,6 +8,7 @@ use App\Models\ApplyingGrade;
 use App\Models\Disease;
 use App\Models\District;
 use App\Models\Province;
+use App\Models\Section;
 use App\Models\Sibling;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
@@ -27,7 +28,10 @@ class ApplicantsController extends Controller
             'title' => 'All Applicants'
         ];
 
-        $applicants = Applicant::orderBy('id', 'desc')->get();
+        $applicants = Applicant::with([
+            'applyingGrade',
+            'section'
+        ])->orderBy('id', 'desc')->get();
         $data['applicants'] = $applicants;
 
         return view('applicants.index', $data);
@@ -41,13 +45,17 @@ class ApplicantsController extends Controller
     public function applicantForm(Applicant $applicant, $id=null)
     {
 
+        $sections = [];
         if(!is_null($id)){
             $applicant = Applicant::find(Crypt::decrypt($id));
+            $sections = Section::where('applying_grade_id', $applicant->applying_grade_id)->pluck('title', 'id')->toArray();
+            // dd($sections);
         }
 
         $data = [
             'title' => 'New Applicant',
             'applicant' => $applicant,
+            'sections' => $sections,
             'applying_grades' => ApplyingGrade::pluck('title', 'id')->toArray(),
             'provinces' => Province::pluck('title', 'id')->toArray(),
             'districts' => District::pluck('title', 'id')->toArray()
@@ -111,6 +119,7 @@ class ApplicantsController extends Controller
                 $q->orderBy('dob', 'desc');
             },
             'applyingGrade',
+            'section',
             'district',
             'country',
             'fatherDistrict',

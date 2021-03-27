@@ -39,30 +39,33 @@
                     <div class="b-order b-order-red-800 grid grid-cols-1 overflow-y-auto">
 
 
-                        <table class="table-fixed border-collapse b-order border-gray-400 text-sm w-full" id="myTable">
+                        <table class="border-collapse b-order border-gray-400 text-xs w-full" id="myTable">
 
                             <thead>
                             <tr>
                                 <th class="py-2 px-3 bg-gray-100 border border-gray-300">#</th>
                                 <th class="py-2 px-3 bg-gray-100 border border-gray-300">Form No.</th>
-                                <th class="py-2 px-3 bg-gray-100 border border-gray-300">Grade</th>
+                                <th class="py-2 px-3 bg-gray-100 border border-gray-300">Grade / Class</th>
+                                <th class="py-2 px-3 bg-gray-100 border border-gray-300">Section</th>
                                 <th class="py-2 px-3 bg-gray-100 border border-gray-300">Name</th>
                                 <th class="py-2 px-3 bg-gray-100 border border-gray-300">Father Name</th>
                                 <th class="py-2 px-3 bg-gray-100 border border-gray-300">Father CNIC</th>
                                 <th class="py-2 px-3 bg-gray-100 border border-gray-300">Father Contact</th>
                                 <th class="py-2 px-3 bg-gray-100 border border-gray-300">Mother Name</th>
                                 <th class="py-2 px-3 bg-gray-100 border border-gray-300">Mother CNIC</th>
-                                <th class="py-2 px-3 bg-gray-100 border border-gray-300 w-1/6">Action</th>
+                                <th class="py-2 px-3 bg-gray-100 border border-gray-300" style="width: 130px !important">Action</th>
                             </tr>
                             </thead>
 
 
                             <tbody>
+                            @php $bg = '' @endphp
                             @foreach($applicants as $ap)
-                            <tr>
+                            <tr class="border-b border-gray-200 {{ $bg }} hover:bg-gray-100">
                                 <td class="p-2 border border-gray-300">{{ $loop->iteration }}</td>
                                 <td class="p-2 border border-gray-300">{{ $ap->form_number }}</td>
-                                <td class="p-2 border border-gray-300">{{ $ap->applyingGrade->title }}</td>
+                                <td class="p-2 border border-gray-300">{{ $ap->applyingGrade->title ?? '' }}</td>
+                                <td class="p-2 border border-gray-300">{{ $ap->section->title ?? '' }}</td>
                                 <td class="p-2 border border-gray-300">{{ $ap->name }}</td>
                                 <td class="p-2 border border-gray-300">{{ $ap->father_name }}</td>
                                 <td class="p-2 border border-gray-300">{{ $ap->father_cnic }}</td>
@@ -75,18 +78,20 @@
                                         <i class="fas fa-user-alt"></i>
                                     </a>
 
-                                    <a href="#" class="py-1 px-2 bg-blue-500 text-white inline-block">
+                                    {{--<a href="#" class="py-1 px-2 bg-blue-500 text-white inline-block">
                                         <i class="fas fa-print"></i>
-                                    </a>
+                                    </a>--}}
 
                                     <a href="{{ route('applicant.applicant-form', ['id' => \Illuminate\Support\Facades\Crypt::encrypt($ap->id)]) }}" class="py-1 px-2 bg-yellow-500 text-white inline-block">
                                         <i class="far fa-edit"></i>
                                     </a>
+
                                     <a href="#" class="py-1 px-2 bg-red-400 text-white inline-block">
                                         <i class="far fa-trash-alt"></i>
                                     </a>
                                 </td>
                             </tr>
+                            @php $bg = ($bg == '') ? 'bg-gray-50' : '' @endphp
                             @endforeach
 
 
