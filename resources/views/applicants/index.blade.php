@@ -44,6 +44,8 @@
                             <thead>
                             <tr>
                                 <th class="py-2 px-3 bg-gray-100 border border-gray-300">#</th>
+                                <th class="py-2 px-3 bg-gray-100 border border-gray-300">Form No.</th>
+                                <th class="py-2 px-3 bg-gray-100 border border-gray-300">Grade</th>
                                 <th class="py-2 px-3 bg-gray-100 border border-gray-300">Name</th>
                                 <th class="py-2 px-3 bg-gray-100 border border-gray-300">Father Name</th>
                                 <th class="py-2 px-3 bg-gray-100 border border-gray-300">Father CNIC</th>
@@ -59,6 +61,8 @@
                             @foreach($applicants as $ap)
                             <tr>
                                 <td class="p-2 border border-gray-300">{{ $loop->iteration }}</td>
+                                <td class="p-2 border border-gray-300">{{ $ap->form_number }}</td>
+                                <td class="p-2 border border-gray-300">{{ $ap->applyingGrade->title }}</td>
                                 <td class="p-2 border border-gray-300">{{ $ap->name }}</td>
                                 <td class="p-2 border border-gray-300">{{ $ap->father_name }}</td>
                                 <td class="p-2 border border-gray-300">{{ $ap->father_cnic }}</td>

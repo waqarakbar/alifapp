@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ApplicantsController;
 use App\Http\Controllers\DistrictsController;
+use App\Http\Controllers\ApplyingGradesController;
+use App\Http\Controllers\SectionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,12 +44,41 @@ Route::middleware(['auth'])->prefix('alifapp')->group(function(){
 
         Route::get('delete-sibling/{id}', [ApplicantsController::class, 'deleteSibling'])->name('applicant.delete-sibling');
 
+        Route::post('upload-photo', [ApplicantsController::class, 'uploadPhoto'])->name('applicant.upload-photo');
+
     });
 
 
     Route::prefix('districts')->group(function(){
 
         Route::post('districts-by-province-id', [DistrictsController::class, 'districtsByProvinceId'])->name('districts-by-province-id');
+
+    });
+
+
+
+    Route::prefix('applying-grades')->group(function(){
+
+        Route::get('all-grades', [ApplyingGradesController::class, 'index'])->name('applying-grades.all-grades');
+
+        Route::get('grade-form/{id?}', [ApplyingGradesController::class, 'gradeForm'])->name('applying-grades.grade-form');
+
+        Route::post('save', [ApplyingGradesController::class, 'save'])->name('applying-grades.save');
+
+        Route::get('delete/{id}', [ApplyingGradesController::class, 'deleteGrade'])->name('applying-grades.delete');
+
+    });
+
+
+    Route::prefix('sections')->group(function(){
+
+        Route::get('all-sections', [SectionsController::class, 'index'])->name('sections.all-sections');
+
+        Route::get('section-form/{id?}', [SectionsController::class, 'sectionForm'])->name('sections.section-form');
+
+        Route::post('save', [SectionsController::class, 'save'])->name('sections.save');
+
+        Route::get('delete/{id}', [SectionsController::class, 'deleteSection'])->name('sections.delete');
 
     });
 

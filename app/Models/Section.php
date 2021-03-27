@@ -6,21 +6,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ApplyingGrade extends Model
+class Section extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
     protected $fillable = [
-        'title'
+        'applying_grade_id', 'title'
     ];
 
+    public function applyingGrade(){
+        return $this->belongsTo(ApplyingGrade::class);
+    }
+
     public function applicants(){
-        return $this->hasMany(Applicant::class, 'applying_grade_id', 'id');
+        return $this->hasMany(Applicant::class, 'section_id', 'id');
     }
-
-    public function sections(){
-        return $this->hasMany(Section::class);
-    }
-
 }

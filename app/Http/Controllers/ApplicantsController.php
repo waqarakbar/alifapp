@@ -78,6 +78,13 @@ class ApplicantsController extends Controller
             $applicant->fill($inputs);
             $applicant->save();
 
+            // update the from number on create
+            if(!$request->has('id')){
+                $applicant->form_number = date("Y")."-".str_pad($applicant->id, 4, '0', STR_PAD_LEFT);
+                $applicant->save();
+            }
+
+
             Session::flash('success', 'Applicant saved successfully');
             return redirect(route('applicant.list'));
 
@@ -238,6 +245,46 @@ class ApplicantsController extends Controller
             return redirect(route('applicant.applicant-profile', [Crypt::encrypt($sib->applicant_id)]));
         }
 
+
+    }
+
+
+
+    public function uploadPhoto(Request $request){
+
+        $applicant_id = Crypt::decrypt($request->get('applicant_id'));
+
+        try {
+
+            if($request->file('photo')){
+                $file = $request->file('photo');
+                $file_ext   = $file->guessExtension();
+                $originalName = $file->getClientOriginalName();
+                $fileName   = str_replace(" ", "_", strtolower($originalName))."-".$request->get('id')."-".sha1(time()*random_int(1, 999999)).".".$file_ext;
+
+                $upload_success = $file->move(public_path()."/uploads/applicants/", $fileName);
+
+                if($upload_success){
+                    $applicant = Applicant::find($applicant_id);
+                    $applicant->photo = $fileName;
+                    $applicant->save();
+                }
+            }else{
+
+                Session::flash('error', 'Oops! Looks like you have not selected any photo');
+                return redirect(route('applicant.applicant-profile', [Crypt::encrypt($applicant_id)]));
+
+            }
+
+            Session::flash('success', 'Photo updated successfully');
+            return redirect(route('applicant.applicant-profile', [Crypt::encrypt($applicant_id)]));
+
+        }catch (Exception $e){
+
+            Session::flash('error', 'Something went wrong, please try again');
+            return redirect(route('applicant.applicant-profile', [Crypt::encrypt($applicant_id)]));
+
+        }
 
     }
 }

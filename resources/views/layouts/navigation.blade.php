@@ -17,6 +17,14 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
+                    <x-nav-link :href="route('applying-grades.all-grades')" :active="request()->routeIs('applying-grades.all-grades')">
+                        {{ __('Grades / Classes') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('sections.all-sections')" :active="request()->routeIs('sections.all-sections')">
+                        {{ __('Sections') }}
+                    </x-nav-link>
+
                     <x-nav-link :href="route('applicant.list')" :active="request()->routeIs('applicant.list')">
                         {{ __('Applicants') }}
                     </x-nav-link>

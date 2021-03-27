@@ -18,6 +18,7 @@ class CreateApplicantsTable extends Migration
 
             $table->string('form_number', 20)->nullable();
             $table->bigInteger('applying_grade_id')->unsigned(); //-- FK
+            $table->bigInteger('section_id')->unsigned(); //-- FK
             $table->enum('need_transportation', ['yes', 'no'])->default('yes');
             $table->enum('how_hear_about_us', ['newspaper', 'television', 'internet', 'references'])->nullable();
             $table->string('source_name', 255)->nullable();
@@ -87,6 +88,7 @@ class CreateApplicantsTable extends Migration
             $table->string('eme_work_phone', 20)->nullable();
             $table->string('eme_cell_phone', 20)->nullable();
             $table->string('eme_email', 255)->nullable();
+            $table->text('photo')->nullable();
 
 
 

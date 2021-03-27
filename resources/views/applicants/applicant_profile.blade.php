@@ -11,7 +11,9 @@
 
 
 
+
         } );
+
     </script>
 @endpush
 
@@ -57,10 +59,24 @@
             <div class="grid grid-cols-3 gap-4">
 
 
-                <div class="md:col-span-1 rounded p-10 pt-15 bg-white shadow-md">
+                <div class="md:col-span-1 rounded p-10 pt-15 pb-1 bg-white shadow-md">
 
                     <div class="flex justify-center mb-2">
-                        <img src="https://i.imgur.com/zQZSWrt.jpg" class="rounded-full h-24 w-24 flex items-center justify-center">
+                        @if(is_null($applicant->photo))
+                            <img src="{{ asset('images/np.png') }}" class="rounded-full h-36 w-36 flex items-center justify-center border border-gray-300 p-0.5">
+                        @else
+                            <img src="{{ asset('uploads/applicants/'.$applicant->photo) }}" class="-rounded-full max-h-60 w-36 flex items-center justify-center border border-gray-300 p-0.5">
+                        @endif
+                    </div>
+
+
+                    <div class="flex justify-center mb-2">
+
+                        @include('applicants.upload_photo')
+
+                        <a href="#upload_photo" class="text-xs text-blue-500 mb-5" rel="modal:open">
+                            <i class="fa fa-edit"></i> upload photo
+                        </a>
                     </div>
 
 

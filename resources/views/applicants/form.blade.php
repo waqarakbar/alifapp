@@ -24,8 +24,25 @@
                     }
                 })
 
-            })
+            });
+
+            var cnic_im = new Inputmask("99999-9999999-9");
+            cnic_im.mask(document.getElementById("father_cnic"));
+            cnic_im.mask(document.getElementById("mother_cnic"));
+            cnic_im.mask(document.getElementById("eme_cnic"));
+
+            var mobile_im = new Inputmask("0999 9999999");
+            mobile_im.mask(document.getElementById("mobile_number"));
+            mobile_im.mask(document.getElementById("father_cell_phone"));
+            mobile_im.mask(document.getElementById("mother_cell_phone"));
+            mobile_im.mask(document.getElementById("eme_cell_phone"));
+
+
+
         });
+
+
+
     </script>
 @endpush
 
@@ -69,14 +86,14 @@
 
                         <div>
 
-                            <div class="grid md:grid-cols-2  gap-4">
+                            <div class="grid md:grid-cols-1  gap-4">
 
-                                <div class="">
+                                {{--<div class="">
                                     {!! Form::label('form_number', 'Form Number ', ['class' => '']) !!}
                                     <span
                                         class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('form_number') !!} @endif</span>
                                     {!! Form::text('form_number', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'form_number']) !!}
-                                </div>
+                                </div>--}}
 
 
                                 <div class="">
@@ -138,7 +155,7 @@
 
                     <div class="grid md:grid-cols-4 gap-4 mt-5">
 
-                        <div class="">
+                        <div class="col-span-2">
                             {!! Form::label('name', 'Applicant Name ', ['class' => 'req']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('name') !!} @endif</span>
@@ -162,12 +179,12 @@
                         </div>
 
 
-                        <div class="">
+                        {{--<div class="">
                             {!! Form::label('dob_words', 'DOB Words ', ['class' => '']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('dob_words') !!} @endif</span>
                             {!! Form::text('dob_words', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'dob_words']) !!}
-                        </div>
+                        </div>--}}
 
                     </div>
 
@@ -285,7 +302,7 @@
                             {!! Form::label('father_cnic', 'Father CNIC ', ['class' => '']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('father_cnic') !!} @endif</span>
-                            {!! Form::text('father_cnic', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'father_cnic']) !!}
+                            {!! Form::text('father_cnic', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full cnic', 'id' => 'father_cnic']) !!}
                         </div>
 
                         <div class="">
@@ -443,7 +460,7 @@
                             {!! Form::label('mother_cnic', 'Mother CNIC ', ['class' => '']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('mother_cnic') !!} @endif</span>
-                            {!! Form::text('mother_cnic', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'mother_cnic']) !!}
+                            {!! Form::text('mother_cnic', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full cnic', 'id' => 'mother_cnic']) !!}
                         </div>
 
                         <div class="">
@@ -574,7 +591,7 @@
                             {!! Form::label('mother_email', 'Email Address ', ['class' => '']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('mother_email') !!} @endif</span>
-                            {!! Form::email('mother_email', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'mother_email']) !!}
+                            {!! Form::text('mother_email', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'mother_email']) !!}
                         </div>
                     </div>
 
@@ -601,7 +618,7 @@
                             {!! Form::label('eme_cnic', 'Emergency CNIC ', ['class' => '']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('eme_cnic') !!} @endif</span>
-                            {!! Form::text('eme_cnic', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'eme_cnic']) !!}
+                            {!! Form::text('eme_cnic', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full cnic', 'id' => 'eme_cnic']) !!}
                         </div>
 
                         <div class="">
@@ -732,7 +749,7 @@
                             {!! Form::label('eme_email', 'Email Address ', ['class' => '']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('eme_email') !!} @endif</span>
-                            {!! Form::email('eme_email', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'eme_email']) !!}
+                            {!! Form::text('eme_email', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'eme_email']) !!}
                         </div>
                     </div>
 

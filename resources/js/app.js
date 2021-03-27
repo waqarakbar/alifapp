@@ -9,5 +9,6 @@ require('datatables.net');
 require('datatables.net-dt');
 require('jquery-modal')
 require('print-this')
-const { ToWords } = require('to-words');
+require('inputmask')
+require('awesome-notifications');
 

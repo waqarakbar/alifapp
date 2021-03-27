@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class ApplyingGrade extends Model
+class AcademicSession extends Model
 {
     use HasFactory;
     use SoftDeletes;
@@ -14,13 +14,4 @@ class ApplyingGrade extends Model
     protected $fillable = [
         'title'
     ];
-
-    public function applicants(){
-        return $this->hasMany(Applicant::class, 'applying_grade_id', 'id');
-    }
-
-    public function sections(){
-        return $this->hasMany(Section::class);
-    }
-
 }

@@ -79,7 +79,8 @@ class Applicant extends Model
         'eme_country_id',
         'eme_work_phone',
         'eme_cell_phone',
-        'eme_email'
+        'eme_email',
+        'photo'
     ];
 
     public function academics(){
@@ -92,6 +93,10 @@ class Applicant extends Model
 
     public function applyingGrade(){
         return $this->belongsTo(ApplyingGrade::class);
+    }
+
+    public function section(){
+        return $this->belongsTo(Section::class, 'section_id', 'id');
     }
 
     public function district(){
