@@ -113,7 +113,13 @@
 
                     <td class="border-ccc no-border-f"
                         style="width: 110px; height: 120px; max-height: 120px; text-align: center; position: relative; padding: 0px !important">
-                        <div style="width: 110px; height: 142px; position: absolute; top: 0px; left: 0px; background-color: #fff;">PHOTO</div>
+                        <div style="width: 110px; height: 142px; position: absolute; top: 0px; left: 0px; background-color: #fff;">
+                            @if(is_null($applicant->photo))
+                                PHOTO
+                            @else
+                                <img src="{{ asset('uploads/applicants/'.$applicant->photo) }}" alt="" style="width:100%">
+                            @endif
+                        </div>
                     </td>
                 </tr>
             </table>
