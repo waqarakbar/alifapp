@@ -73,7 +73,7 @@ class ApplicantsController extends Controller
     public function save(Request $request)
     {
         $inputs = $request->all();
-        dd($inputs);
+        // dd($inputs);
 
         try {
 
