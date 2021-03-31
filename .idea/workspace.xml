@@ -3,21 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f152c5e4-ab34-41ac-abb4-974e5ef02bce" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ApplicantsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ApplicantsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SectionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SectionsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Applicant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Applicant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/applicants/form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/applicants/form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/applicants/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/applicants/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/applying_grades/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/applying_grades/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navigation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navigation.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/sections/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/sections/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +190,8 @@
       <workItem from="1615983431835" duration="846000" />
       <workItem from="1616062349710" duration="7632000" />
       <workItem from="1616234603820" duration="14722000" />
-      <workItem from="1616829958960" duration="19276000" />
+      <workItem from="1616829958960" duration="19779000" />
+      <workItem from="1617179900973" duration="52000" />
     </task>
     <servers />
   </component>
@@ -221,5 +208,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

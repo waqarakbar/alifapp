@@ -742,7 +742,7 @@
                             {!! Form::label('eme_district_id', 'Select district  ', ['class' => '']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('eme_district_id') !!} @endif</span>
-                            {!! Form::select('eme_district_id', [null=>'Select District ']+$districts, NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full select2 district_list', 'id' => 'eme_district_id']) !!}
+                            {!! Form::select('eme_district_id', ['0'=>'Select District ']+$districts, NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full select2 district_list', 'id' => 'eme_district_id']) !!}
                         </div>
 
 
