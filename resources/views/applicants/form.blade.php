@@ -272,7 +272,7 @@
                             {!! Form::label('province_id', 'Select province ', ['class' => 'req']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('province_id') !!} @endif</span>
-                            {!! Form::select('province_id', [null=>'Select Province']+$provinces, NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full select2 province_list', 'id' => 'province_id', 'required' => 'required']) !!}
+                            {!! Form::select('province_id', [null=>'Select Province']+$provinces, NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full s-elect2 province_list', 'id' => 'province_id', 'required' => 'required']) !!}
                         </div>
 
 
@@ -280,7 +280,7 @@
                             {!! Form::label('district_id', 'Select district  ', ['class' => 'req']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('district_id') !!} @endif</span>
-                            {!! Form::select('district_id', [null=>'Select District ']+$districts, NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full select2 district_list', 'id' => 'district_id', 'required' => 'required']) !!}
+                            {!! Form::select('district_id', [null=>'Select District ']+$districts, NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full s-elect2 district_list', 'id' => 'district_id', 'required' => 'required']) !!}
                         </div>
 
 
@@ -426,7 +426,7 @@
                             {!! Form::label('father_province_id', 'Select province ', ['class' => 'req']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('father_province_id') !!} @endif</span>
-                            {!! Form::select('father_province_id', [null=>'Select Province']+$provinces, NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full select2 province_list', 'id' => 'father_province_id', 'required' => 'required']) !!}
+                            {!! Form::select('father_province_id', [null=>'Select Province']+$provinces, NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full s-elect2 province_list', 'id' => 'father_province_id', 'required' => 'required']) !!}
                         </div>
 
 
@@ -434,7 +434,7 @@
                             {!! Form::label('father_district_id', 'Select district  ', ['class' => 'req']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('father_district_id') !!} @endif</span>
-                            {!! Form::select('father_district_id', [null=>'Select District ']+$districts, NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full select2 district_list', 'id' => 'father_district_id', 'required' => 'required']) !!}
+                            {!! Form::select('father_district_id', [null=>'Select District ']+$districts, NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full s-elect2 district_list', 'id' => 'father_district_id', 'required' => 'required']) !!}
                         </div>
 
 
@@ -580,7 +580,7 @@
                             {!! Form::label('mother_province_id', 'Select province ', ['class' => 'req']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('mother_province_id') !!} @endif</span>
-                            {!! Form::select('mother_province_id', [null=>'Select Province']+$provinces, NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full select2 province_list', 'id' => 'mother_province_id', 'required' => 'required']) !!}
+                            {!! Form::select('mother_province_id', [null=>'Select Province']+$provinces, NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full s-elect2 province_list', 'id' => 'mother_province_id', 'required' => 'required']) !!}
                         </div>
 
 
@@ -588,7 +588,7 @@
                             {!! Form::label('mother_district_id', 'Select district  ', ['class' => 'req']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('mother_district_id') !!} @endif</span>
-                            {!! Form::select('mother_district_id', [null=>'Select District ']+$districts, NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full select2 district_list', 'id' => 'mother_district_id', 'required' => 'required']) !!}
+                            {!! Form::select('mother_district_id', [null=>'Select District ']+$districts, NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full s-elect2 district_list', 'id' => 'mother_district_id', 'required' => 'required']) !!}
                         </div>
 
 
@@ -734,7 +734,7 @@
                             {!! Form::label('eme_province_id', 'Select province ', ['class' => '']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('eme_province_id') !!} @endif</span>
-                            {!! Form::select('eme_province_id', [null=>'Select Province']+$provinces, NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full select2 province_list', 'id' => 'eme_province_id']) !!}
+                            {!! Form::select('eme_province_id', [null=>'Select Province']+$provinces, NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full s-elect2 province_list', 'id' => 'eme_province_id']) !!}
                         </div>
 
 
@@ -742,7 +742,7 @@
                             {!! Form::label('eme_district_id', 'Select district  ', ['class' => '']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('eme_district_id') !!} @endif</span>
-                            {!! Form::select('eme_district_id', ['0'=>'Select District ']+$districts, NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full select2 district_list', 'id' => 'eme_district_id']) !!}
+                            {!! Form::select('eme_district_id', ['0'=>'Select District ']+$districts, NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full s-elect2 district_list', 'id' => 'eme_district_id']) !!}
                         </div>
 
 
