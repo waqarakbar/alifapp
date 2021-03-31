@@ -109,6 +109,7 @@
 
                     <td style="">
                         <h2 style="text-align:center; font-weight: bold; color: #fff; font-size: 40px; line-height: 40px; font-family: Arial; border-left: 10px solid white">Admission Form</h2>
+                        <h3 class="text-white font-bold text-md text-center">Form No. {{ $applicant->form_number }}</h3>
                     </td>
 
                     <td class="border-ccc no-border-f"
