@@ -143,11 +143,22 @@
                         </div>
 
 
-                        <div class="">
-                            {!! Form::label('session', 'Session ', ['class' => 'req']) !!}
-                            <span
-                                class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('session') !!} @endif</span>
-                            {!! Form::text('session', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'session', 'required' => 'required']) !!}
+                        <div class="grid md:grid-cols-2  gap-4">
+                            <div class="">
+                                {!! Form::label('session', 'Session ', ['class' => 'req']) !!}
+                                <span
+                                    class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('session') !!} @endif</span>
+                                {!! Form::text('session', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'session', 'required' => 'required']) !!}
+                            </div>
+
+
+                            <div class="">
+                                {!! Form::label('admission_number', 'Admission Number ', ['class' => '']) !!}
+                                <span
+                                    class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('admission_number') !!} @endif</span>
+                                {!! Form::text('admission_number', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'admission_number']) !!}
+                            </div>
+
                         </div>
 
 
@@ -222,7 +233,7 @@
                     </div>
 
 
-                    <div class="grid md:grid-cols-2 gap-4 mt-5">
+                    {{--<div class="grid md:grid-cols-2 gap-4 mt-5">
 
                         <div class="">
                             {!! Form::label('address', 'Address ', ['class' => 'req']) !!}
@@ -260,10 +271,10 @@
                         </div>
 
 
-                    </div>
+                    </div>--}}
 
 
-                    <div class="grid md:grid-cols-4 gap-4 mt-5">
+                    {{--<div class="grid md:grid-cols-4 gap-4 mt-5">
 
                         <input type="hidden" name="country_id" value="168">
 
@@ -299,17 +310,17 @@
                             {!! Form::text('mobile_number', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'mobile_number', 'required' => 'required']) !!}
                         </div>
 
-                    </div>
+                    </div>--}}
 
 
-                    <div class="grid md:grid-cols-1 gap-4 mt-5">
+                    {{--<div class="grid md:grid-cols-1 gap-4 mt-5">
                         <div class="">
                             {!! Form::label('email_address', 'Email Address ', ['class' => '']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('email_address') !!} @endif</span>
                             {!! Form::email('email_address', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'email_address']) !!}
                         </div>
-                    </div>
+                    </div>--}}
 
 
                     <div class="grid md:grid-cols-1 gap-4 mt-10">
@@ -439,7 +450,7 @@
 
 
                         <div class="">
-                            {!! Form::label('father_work_phone', 'Work phone number ', ['class' => '']) !!}
+                            {!! Form::label('father_work_phone', 'Work phone/Whatsapp Number ', ['class' => '']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('father_work_phone') !!} @endif</span>
                             {!! Form::text('father_work_phone', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'father_work_phone']) !!}
@@ -467,40 +478,48 @@
 
 
                     <div class="grid md:grid-cols-1 gap-4 mt-10">
-                        <h2 class="text-lg font-bold">Mother's Information</h2>
+                        <h2 class="text-lg font-bold">Mother's/Guardian's Information</h2>
                         <hr>
                     </div>
 
 
-                    <div class="grid md:grid-cols-4 gap-4 mt-5">
+                    <div class="grid md:grid-cols-2 gap-4 mt-5">
 
                         <div class="">
-                            {!! Form::label('mother_name', 'Mother name ', ['class' => 'req']) !!}
+                            {!! Form::label('mother_name', 'Mother/Guardian name ', ['class' => 'req']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('mother_name') !!} @endif</span>
                             {!! Form::text('mother_name', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'mother_name', 'required' => 'required']) !!}
                         </div>
 
+
                         <div class="">
+                            {!! Form::label('mother_cell_phone', 'In-case of emergency contact number ', ['class' => '']) !!}
+                            <span
+                                class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('mother_cell_phone') !!} @endif</span>
+                            {!! Form::text('mother_cell_phone', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'mother_cell_phone']) !!}
+                        </div>
+
+                        {{--<div class="">
                             {!! Form::label('mother_cnic', 'Mother CNIC ', ['class' => '']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('mother_cnic') !!} @endif</span>
                             {!! Form::text('mother_cnic', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full cnic', 'id' => 'mother_cnic']) !!}
-                        </div>
+                        </div>--}}
 
-                        <div class="">
+                        {{--<div class="">
                             {!! Form::label('mother_cast', 'Mother cast ', ['class' => '']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('mother_cast') !!} @endif</span>
                             {!! Form::text('mother_cast', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'mother_cast']) !!}
-                        </div>
+                        </div>--}}
 
-                        <div class="">
+                        {{--<div class="">
                             {!! Form::label('mother_tribe', 'Mother tribe ', ['class' => '']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('mother_tribe') !!} @endif</span>
                             {!! Form::text('mother_tribe', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'mother_tribe']) !!}
-                        </div>
+                        </div>--}}
 
                     </div>
 
@@ -539,31 +558,31 @@
 
                     <div class="grid md:grid-cols-2 gap-4 mt-5">
 
-                        <div class="">
+                        {{--<div class="">
                             {!! Form::label('mother_pobox', 'PO Box ', ['class' => '']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('mother_pobox') !!} @endif</span>
                             {!! Form::text('mother_pobox', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'mother_pobox']) !!}
-                        </div>
+                        </div>--}}
 
 
                         <div class="grid md:grid-cols-2 gap-4">
 
 
-                            <div class="">
-                                {!! Form::label('mother_village', 'Village / City ', ['class' => '']) !!}
-                                <span
-                                    class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('mother_village') !!} @endif</span>
-                                {!! Form::text('mother_village', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'mother_village']) !!}
-                            </div>
+                            {{-- <div class="">
+                                 {!! Form::label('mother_village', 'Village / City ', ['class' => '']) !!}
+                                 <span
+                                     class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('mother_village') !!} @endif</span>
+                                 {!! Form::text('mother_village', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'mother_village']) !!}
+                             </div>--}}
 
 
-                            <div class="">
+                            {{--<div class="">
                                 {!! Form::label('mother_tehsil', 'Tehsil ', ['class' => '']) !!}
                                 <span
                                     class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('mother_tehsil') !!} @endif</span>
                                 {!! Form::text('mother_tehsil', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'mother_tehsil']) !!}
-                            </div>
+                            </div>--}}
 
                         </div>
 
@@ -576,51 +595,44 @@
                         <input type="hidden" name="mother_country_id" value="168">
 
 
-                        <div class="">
+                        {{--<div class="">
                             {!! Form::label('mother_province_id', 'Select province ', ['class' => 'req']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('mother_province_id') !!} @endif</span>
                             {!! Form::select('mother_province_id', [null=>'Select Province']+$provinces, NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full s-elect2 province_list', 'id' => 'mother_province_id', 'required' => 'required']) !!}
-                        </div>
+                        </div>--}}
 
 
-                        <div class="">
+                        {{--<div class="">
                             {!! Form::label('mother_district_id', 'Select district  ', ['class' => 'req']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('mother_district_id') !!} @endif</span>
                             {!! Form::select('mother_district_id', [null=>'Select District ']+$districts, NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full s-elect2 district_list', 'id' => 'mother_district_id', 'required' => 'required']) !!}
-                        </div>
+                        </div>--}}
 
 
-                        <div class="">
-                            {!! Form::label('mother_work_phone', 'Work phone number ', ['class' => '']) !!}
-                            <span
-                                class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('mother_work_phone') !!} @endif</span>
-                            {!! Form::text('mother_work_phone', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'mother_work_phone']) !!}
-                        </div>
+                        {{-- <div class="">
+                             {!! Form::label('mother_work_phone', 'Work phone number ', ['class' => '']) !!}
+                             <span
+                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('mother_work_phone') !!} @endif</span>
+                             {!! Form::text('mother_work_phone', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'mother_work_phone']) !!}
+                         </div>--}}
 
-
-                        <div class="">
-                            {!! Form::label('mother_cell_phone', 'Mobile number ', ['class' => '']) !!}
-                            <span
-                                class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('mother_cell_phone') !!} @endif</span>
-                            {!! Form::text('mother_cell_phone', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'mother_cell_phone']) !!}
-                        </div>
 
                     </div>
 
 
-                    <div class="grid md:grid-cols-1 gap-4 mt-5">
+                    {{--<div class="grid md:grid-cols-1 gap-4 mt-5">
                         <div class="">
                             {!! Form::label('mother_email', 'Email Address ', ['class' => '']) !!}
                             <span
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('mother_email') !!} @endif</span>
                             {!! Form::text('mother_email', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'mother_email']) !!}
                         </div>
-                    </div>
+                    </div>--}}
 
 
-                    <div class="grid md:grid-cols-1 gap-4 mt-10">
+                    {{--<div class="grid md:grid-cols-1 gap-4 mt-10">
                         <h2 class="text-lg font-bold">Emergency Contact Information</h2>
                         <hr>
                     </div>
@@ -771,7 +783,7 @@
                                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('eme_email') !!} @endif</span>
                             {!! Form::text('eme_email', NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'eme_email']) !!}
                         </div>
-                    </div>
+                    </div>--}}
 
 
                     <div class="grid md:grid-cols-1 gap-4 mt-10">

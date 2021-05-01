@@ -13,6 +13,7 @@ class Applicant extends Model
 
     protected $fillable = [
         'form_number',
+        'admission_number',
         'applying_grade_id',
         'section_id',
         'need_transportation',

@@ -32,6 +32,14 @@
 
 
         <div class="col-span-2">
+            {!! Form::label('slc_received', 'SLC Received ', ['class' => '']) !!}
+            <span
+                class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('slc_received') !!} @endif</span>
+            {!! Form::select('slc_received', ['yes'=>'Yes', 'no' => 'No'], NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'slc_received']) !!}
+        </div>
+
+
+        <div class="col-span-2">
             {!! Form::label('address', 'Address ', ['class' => '']) !!}
             <span
                 class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('address') !!} @endif</span>

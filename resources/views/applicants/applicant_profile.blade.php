@@ -133,13 +133,16 @@
                         <div class="grid grid-cols-2 gap-4 mb-10">
 
                             <div>
-                                <h3 class="font-bold text-xl">Academics</h3>
+                                <h3 class="font-bold text-xl">Prior School Information</h3>
                             </div>
 
                             <div class="text-right">
+
+                                @if($applicant->academics->count() == 0)
                                 <a href="#new_academic_form" class="px-2 py-1 b-g-green-500 inline-block text-blue-700 rounded text-sm" rel="modal:open">
                                     <i class="fa fa-plus"></i> Add New
                                 </a>
+                                @endif
                             </div>
                         </div>
 
@@ -155,6 +158,7 @@
                                     <th class="py-2 px-3 bg-gray-100 border border-gray-300">From</th>
                                     <th class="py-2 px-3 bg-gray-100 border border-gray-300">To</th>
                                     <th class="py-2 px-3 bg-gray-100 border border-gray-300">Address</th>
+                                    <th class="py-2 px-3 bg-gray-100 border border-gray-300">SLC Received</th>
                                     <th class="py-2 px-3 bg-gray-100 border border-gray-300"></th>
                                 </tr>
                                 </thead>
@@ -167,6 +171,7 @@
                                     <td class="p-2 border border-gray-300">{{ $acd->from_date }}</td>
                                     <td class="p-2 border border-gray-300">{{ $acd->to_date }}</td>
                                     <td class="p-2 border border-gray-300">{{ $acd->address }}</td>
+                                    <td class="p-2 border border-gray-300">{{ $acd->slc_received }}</td>
                                     <td class="p-2 border border-gray-300 text-center">
                                         <a href="{{ route('applicant.delete-academic', ['id' => \Illuminate\Support\Facades\Crypt::encrypt($acd->id)]) }}" class="text-red-700" onclick="return confirm('Are you sure you want to delete?')">
                                             <i class="fa fa-trash"></i>
@@ -299,7 +304,7 @@
                                 <div class="grid md:grid-cols-2 gap-4">
 
                                     <div class="col-span-2 mt-5">
-                                        {!! Form::label('major_surgeries', 'Please indicate if the student has had any magor operations or injuries (specify) ', ['class' => '']) !!}
+                                        {!! Form::label('major_surgeries', 'Please indicate if the student has had any major operations or injuries (specify) ', ['class' => '']) !!}
                                         <span
                                             class="help">@if(Session::has('errors')) {!! Session::get('errors')->first('major_surgeries') !!} @endif</span>
                                         {!! Form::textarea('major_surgeries', $applicant->doctors[0]->major_surgeries ?? NULL, ['class' => 'border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm w-full', 'id' => 'major_surgeries', 'rows' => 4]) !!}

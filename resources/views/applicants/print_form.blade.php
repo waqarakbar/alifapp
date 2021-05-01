@@ -104,21 +104,21 @@
                 <tr>
 
                     <td style="-text-align:center !important; width: 400px">
-                        <img src="{{ asset('images/alif_logo_transparent_w.png') }}" alt="" style="width: 90%">
+                        <img src="{{ asset('images/alif_logo_transparent_w.png') }}" alt="" style="width: 70%">
                     </td>
 
                     <td style="">
-                        <h2 style="text-align:center; font-weight: bold; color: #fff; font-size: 40px; line-height: 40px; font-family: Arial; border-left: 10px solid white">Admission Form</h2>
+                        <h2 style="text-align:center; font-weight: bold; color: #fff; font-size: 20px; line-height: 20px; font-family: Arial; b-order-left: 10px solid white">Admission Form</h2>
                         <h3 class="text-white font-bold text-md text-center">Form No. {{ $applicant->form_number }}</h3>
                     </td>
 
                     <td class="border-ccc no-border-f"
-                        style="width: 110px; height: 120px; max-height: 120px; text-align: center; position: relative; padding: 0px !important">
-                        <div style="width: 110px; height: 142px; position: absolute; top: 0px; left: 0px; background-color: #fff;">
+                        style="width: 110px; height: 60px; max-height: 60px; text-align: center; position: relative; padding: 0px !important">
+                        <div style="width: 110px; height: 120px; position: absolute; top: 0px; left: 0px; background-color: #fff; overflow: hidden">
                             @if(is_null($applicant->photo))
                                 PHOTO
                             @else
-                                <img src="{{ asset('uploads/applicants/'.$applicant->photo) }}" alt="" style="width:100%">
+                                <img src="{{ asset('uploads/applicants/'.$applicant->photo) }}" alt="" style="width:95%; display: inline-block; margin: 0px auto;">
                             @endif
                         </div>
                     </td>
@@ -138,6 +138,9 @@
                     <td class="border-ccc" style="width: 400px">
                         <span class="visibility-hidden">Which grade are you applying for: </span>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $applicant->applyingGrade->title }}
+                            @if($applicant->section)
+                                ({{ $applicant->section->title }})
+                            @endif
                     </td>
 
                     <td class="border-ccc">
@@ -214,19 +217,31 @@
 
             <table class="border-ccc" style="margin: 0 auto !important">
                 <tr>
-                    <td></td>
+                    <td>
+                        <span class="visibility-hidden">Session: </span>{{ $applicant->session }}
+                    </td>
+
+                    <td>
+                        <span
+                            class="visibility-hidden">Admission No.: </span>{{ $applicant->admission_number }}
+                    </td>
+
                     <td class="border-ccc" style="width: 450px">
                         <span
                             class="visibility-hidden">Name of Source:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $applicant->source_name }}
                     </td>
                 </tr>
 
-                <tr>
+                {{--<tr>
                     <td class="border-ccc">
                         <span
                             class="visibility-hidden">Session: </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $applicant->session }}
                     </td>
-                </tr>
+                    <td>
+                        <span
+                            class="visibility-hidden">Admission No.: </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $applicant->admission_number }}
+                    </td>
+                </tr>--}}
             </table>
         </div>
 
@@ -298,16 +313,16 @@
                 </tr>
 
 
-                <tr>
+                {{--<tr>
                     <td class="border-cc" colspan="3">
                         <p style="padding: 8px 0px !important"></p>
                     </td>
-                </tr>
+                </tr>--}}
 
             </table>
 
 
-            <table class="border-ccc" style="margin: 0 auto !important">
+            {{--<table class="border-ccc" style="margin: 0 auto !important">
 
                 <tr>
                     <td colspan="4" class="border-ccc"><span
@@ -327,8 +342,8 @@
                     <td class="border-ccc">{{ $applicant->pobox }}</td>
                     <td class="border-ccc">{{ $applicant->village }}</td>
                     <td class="border-ccc">{{ $applicant->tehsil }}</td>
-                    <td class="border-ccc">{{ $applicant->district->title }}</td>
-                    <td class="border-ccc" style="width: 230px">{{ $applicant->country->title }}</td>
+                    <td class="border-ccc">{{ $applicant->district->title ?? '' }}</td>
+                    <td class="border-ccc" style="width: 230px">{{ $applicant->country->title ?? '' }}</td>
                 </tr>
             </table>
 
@@ -345,7 +360,7 @@
                     <td class="border-ccc">{{ $applicant->mobile_number }}</td>
                     <td class="border-ccc">{{ $applicant->email_address }}</td>
                 </tr>
-            </table>
+            </table>--}}
 
 
         </div>
@@ -438,8 +453,8 @@
                 <tr>
                     <td class="border-ccc">{{ $applicant->father_pobox }}</td>
                     <td class="border-ccc">{{ $applicant->father_village }}</td>
-                    <td class="border-ccc">{{ $applicant->father_tehsil }} {{ $applicant->fatherDistrict->title }}</td>
-                    <td class="border-ccc" style="width: 230px">{{ $applicant->fatherCountry->title }}</td>
+                    <td class="border-ccc">{{ $applicant->father_tehsil }} {{ $applicant->fatherDistrict->title ?? '' }}</td>
+                    <td class="border-ccc" style="width: 230px">{{ $applicant->fatherCountry->title ?? '' }}</td>
                 </tr>
             </table>
 
@@ -467,29 +482,38 @@
 
             <h5 class="visibility-hidden"
                 style="background: #5098E4; color: white; text-transform: uppercase; font-weight: bold; text-align: center; padding: 3px 0px; margin-top: 0px">
-                Mother's Information</h5>
+                Mother's/Guardian Information</h5>
 
             <table class="border-ccc" style="margin: 0 auto !important">
                 <tr>
 
-                    <td class="border-ccc" style="width: 90px;">
-                        <span class="visibility-hidden">Mother's Name: </span>
+                    <td class="border-ccc" style="width: 25%">
+                        <span class="visibility-hidden">Mother's/Guardian Name: </span>
                     </td>
 
-                    <td class="border-ccc">
+                    <td class="border-ccc" style="width: 25%">
                         &nbsp;&nbsp;&nbsp;{{ $applicant->mother_name }}
                     </td>
 
-                    <td class="border-ccc" style="width: 330px;">
+
+                    <td class="border-ccc" style="width: 25%">
+                        <span class="visibility-hidden">In-case of emergency phone number: </span>
+                    </td>
+
+                    <td class="border-ccc" style="width: 25%">
+                        &nbsp;&nbsp;&nbsp;{{ $applicant->mother_cell_phone }}
+                    </td>
+
+                    {{--<td class="border-ccc" style="width: 330px;">
                         <span class="visibility-hidden">CNIC: </span>
                         &nbsp;&nbsp;&nbsp;
                         <span class="bordered-text">{{ $applicant->mother_cnic }}</span>
-                    </td>
+                    </td>--}}
                 </tr>
             </table>
 
 
-            <table class="border-ccc" style="margin: 0 auto !important">
+            {{--<table class="border-ccc" style="margin: 0 auto !important">
                 <tr>
 
                     <td class="border-ccc" style="width: 80px;">
@@ -507,7 +531,7 @@
                 </tr>
 
 
-            </table>
+            </table>--}}
 
 
             <table class="border-ccc" style="margin: 0 auto !important">
@@ -536,7 +560,7 @@
             </table>
 
 
-            <table class="border-ccc" style="margin: 0 auto !important">
+            {{--<table class="border-ccc" style="margin: 0 auto !important">
 
 
                 <tr>
@@ -550,16 +574,16 @@
                 <tr>
                     <td class="border-ccc">{{ $applicant->mother_pobox }}</td>
                     <td class="border-ccc">{{ $applicant->mother_village }}</td>
-                    <td class="border-ccc">{{ $applicant->mother_tehsil }} {{ $applicant->motherDistrict->title }}</td>
-                    <td class="border-ccc" style="width: 230px">{{ $applicant->motherCountry->title }}</td>
+                    <td class="border-ccc">{{ $applicant->mother_tehsil }} {{ $applicant->motherDistrict->title ?? '' }}</td>
+                    <td class="border-ccc" style="width: 230px">{{ $applicant->motherCountry->title ?? '' }}</td>
                 </tr>
-            </table>
+            </table>--}}
 
 
-            <table class="border-ccc" style="margin: 0 auto !important">
+            {{--<table class="border-ccc" style="margin: 0 auto !important">
                 <tr>
                     <td class="border-ccc"><span class="visibility-hidden">Work Phone No: </span></td>
-                    <td class="border-ccc"><span class="visibility-hidden">Cell Phone No: </span></td>
+                    <td class="border-ccc"><span class="visibility-hidden">In-case of emergency phone number: </span></td>
                     <td class="border-ccc" style="width:240px"><span class="visibility-hidden">Email Address: </span>
                     </td>
                 </tr>
@@ -569,7 +593,7 @@
                     <td class="border-ccc">{{ $applicant->mother_cell_phone }}</td>
                     <td class="border-ccc">{{ $applicant->mother_email }}</td>
                 </tr>
-            </table>
+            </table>--}}
 
 
         </div>
@@ -625,7 +649,7 @@
         </div>
 
 
-        <div id="eme_information">
+        {{--<div id="eme_information">
 
             <h5 class="visibility-hidden"
                 style="background: #5098E4; color: white; text-transform: uppercase; font-weight: bold; text-align: center; padding: 3px 0px; margin-top: 0px">
@@ -711,7 +735,7 @@
                     <td class="border-ccc">{{ $applicant->eme_pobox }}</td>
                     <td class="border-ccc">{{ $applicant->eme_village }}</td>
                     <td class="border-ccc">{{ $applicant->eme_tehsil }} {{ $applicant->emeDistrict->title ?? '' }}</td>
-                    <td class="border-ccc" style="width: 230px">{{ $applicant->emeCountry->title }}</td>
+                    <td class="border-ccc" style="width: 230px">{{ $applicant->emeCountry->title ?? '' }}</td>
                 </tr>
             </table>
 
@@ -732,17 +756,17 @@
             </table>
 
 
-        </div>
+        </div>--}}
 
 
-        <div class="newpage"></div>
+        {{--<div class="newpage"></div>--}}
 
 
         <div id="academic_information">
 
             <h5 class="visibility-hidden"
-                style="background: #5098E4; color: white; text-transform: uppercase; font-weight: bold; text-align: center; padding: 3px 0px; padding-bottom: 0px; margin-top: 0px; margin-bottom: 0px; line-height: 10px">Academic Information
-                <span style="text-transform: none; ">Please use an extra sheet if needed</span>
+                style="background: #5098E4; color: white; text-transform: uppercase; font-weight: bold; text-align: center; padding: 3px 0px; padding-bottom: 0px; margin-top: 0px; margin-bottom: 0px; line-height: 10px">Prior School Information
+                {{--<span style="text-transform: none; ">Please use an extra sheet if needed</span>--}}
             </h5>
 
 
@@ -756,10 +780,11 @@
                     <td class="border-ccc">Date From</td>
                     <td class="border-ccc">Date To</td>
                     <td class="border-ccc">City, Tehsil, District, Country, Tel, Fax</td>
+                    <td class="border-ccc">SLC Received</td>
                 </tr>
 
                 @php
-                    $total_fields = 5;
+                    $total_fields = 1;
                     $this_sn = 1;
                 @endphp
                 @foreach($applicant->academics as $acd)
@@ -769,6 +794,7 @@
                         <td class="border-ccc">{{ date("d / M / Y", strtotime($acd->from_date)) }}</td>
                         <td class="border-ccc">{{ date("d / M / Y", strtotime($acd->to_date)) }}</td>
                         <td class="border-ccc">{{ $acd->address }}</td>
+                        <td class="border-ccc">{{ $acd->slc_received }}</td>
                     </tr>
                     @php $total_fields--; $this_sn++; @endphp
                 @endforeach
@@ -888,14 +914,14 @@
 
 
 
-            <table style="margin: 0 auto !important; margin-top: 20px !important; margin-bottom: 40px !important">
+            <table style="margin: 0 auto !important; margin-top: 20px !important; margin-bottom: 0px !important">
 
                 <tr>
-                    <td colspan="3" style="font-size: 13px !important">This application becomes a binding contract upon the undersigned only when the applicant has passed the entrance exam and successfully being enrolled in the school. Alif Education System Administration reserves the right to admit or reject the applicant if such action is deemed necessary and is seen in the best interest of the school. It is understood that classes are strictly limited and priority is given to those students and their siblings who are currently enrolled in the school. Alif Education System is presently not equipped to handle Special Education classes</td>
+                    <td colspan="3" style="font-size: 10px !important">This application becomes a binding contract upon the undersigned only when the applicant has passed the entrance exam and successfully being enrolled in the school. Alif Education System Administration reserves the right to admit or reject the applicant if such action is deemed necessary and is seen in the best interest of the school. It is understood that classes are strictly limited and priority is given to those students and their siblings who are currently enrolled in the school. Alif Education System is presently not equipped to handle Special Education classes</td>
                 </tr>
 
 
-                <tr>
+                {{--<tr>
                     <td style="width: 400px"></td>
 
                     <td style=" width: 200px; padding-right: 20px">
@@ -914,7 +940,7 @@
                         </p>
                         <p>Date</p>
                     </td>
-                </tr>
+                </tr>--}}
             </table>
 
 
@@ -923,34 +949,33 @@
 
                 <tr>
                     <td colspan="2">
-                        <p style="font-size: 13px"><strong>Parent - Student Contract</strong></p>
+                        <p style="font-size: 11px"><strong>Parent - Student Contract</strong></p>
                     </td>
                 </tr>
 
 
                 <tr>
-                    <td colspan="2" style="font-size: 13px !important">
+                    <td colspan="2" style="font-size: 10px !important">
                         I/We, (parent's name)
                         <span style="border-bottom: 1px solid #000; padding: 0px 20px !important"><strong>{{ $applicant->father_name }}</strong></span>
                         and (student's name)
                         <span style="border-bottom: 1px solid #000; padding: 0px 20px !important"><strong>{{ $applicant->name }}</strong></span>
                         agree and accept without reservation, to abid by, and follow all rules, regulation and procedures of Alif Education System as stated in the parent's handbook. We accept the course of disciplinary action which will be instituted if any rule or regulation is not followed and will also pay for any school property that is damaged by our child. We accept that the principal's decision in all matters relating to this school is final.
                         <br>
-                        <br>
                         I authorize Alif Education to photograph or video tape my child for publication(s).
                     </td>
                 </tr>
 
 
-                <tr>
-                    <td style="padding-top: 25px !important; width: 44%">
+                {{--<tr>
+                    <td style="padding-top: 10px !important; width: 44%">
                         Parent's Signature __________________________
                     </td>
 
-                    <td style="padding-top: 25px !important">
+                    <td style="padding-top: 10px !important">
                         Date __________________________
                     </td>
-                </tr>
+                </tr>--}}
 
             </table>
 
@@ -963,15 +988,15 @@
 
         <div id="office_use_information">
 
-            <h4 class="visibility-hidden"
+            {{--<h4 class="visibility-hidden"
                 style="background: #5098E4; color: white; text-transform: uppercase; font-weight: bold !important; text-align: center; padding: 5px 0px !important; margin-top: 20px !important; margin-bottom: 20px !important; line-height: 13px !important; font-size: 14px !important;">For Office Use Only
-            </h4>
+            </h4>--}}
 
 
 
             <table class="" style="margin: 0 auto !important;" >
 
-                <tr>
+                {{--<tr>
                     <td class="border-b-ou" style="width: 49%; padding-top: 30px !important;">
                         <span class="ou_box">Student Name:</span>
                         &nbsp;&nbsp;&nbsp;&nbsp;<strong>{{ $applicant->name }}</strong>
@@ -1007,10 +1032,10 @@
                     <td class="border-b-ou" style="padding-top: 30px !important;">
                         <span class="ou_box">Date of Admission</span>
                     </td>
-                </tr>
+                </tr>--}}
 
 
-                <tr>
+                {{--<tr>
 
                     <td class="border-b-ou" style="padding-top: 35px !important;">
 
@@ -1019,6 +1044,34 @@
                     <td></td>
 
                     <td></td>
+                </tr>--}}
+
+
+                <tr>
+
+                    <td style="padding-top: 10px !important; width: 230px; b-order: 1px solid red">
+                        Parent's Signature __________________________
+                    </td>
+
+                    <td style="padding-top: 10px !important; width: 140px;  b-order: 1px solid red">
+                        Date __________________
+                    </td>
+
+
+
+                    <td style="padding-top: 10px !important; padding-left: 50px; b-order: 1px solid red">
+                        Principal's Sign/Stamp __________________________
+                    </td>
+
+                    {{--<td class="border-b-ou" style="padding-top: 10px !important;">
+                        <span class="ou_box">Principal's signature and stamp:</span>
+                    </td>--}}
+
+                    {{--<td></td>
+
+                    <td class="border-b-ou" style="padding-top: 30px !important;">
+                        <span class="ou_box">Date of Admission</span>
+                    </td>--}}
                 </tr>
 
             </table>

@@ -45,14 +45,15 @@
                             <tr>
                                 <th class="py-2 px-3 bg-gray-100 border border-gray-300">#</th>
                                 <th class="py-2 px-3 bg-gray-100 border border-gray-300">Form No.</th>
+                                <th class="py-2 px-3 bg-gray-100 border border-gray-300">Admission No.</th>
                                 <th class="py-2 px-3 bg-gray-100 border border-gray-300">Grade / Class</th>
                                 <th class="py-2 px-3 bg-gray-100 border border-gray-300">Section</th>
                                 <th class="py-2 px-3 bg-gray-100 border border-gray-300">Name</th>
                                 <th class="py-2 px-3 bg-gray-100 border border-gray-300">Father Name</th>
                                 <th class="py-2 px-3 bg-gray-100 border border-gray-300">Father CNIC</th>
                                 <th class="py-2 px-3 bg-gray-100 border border-gray-300">Father Contact</th>
-                                <th class="py-2 px-3 bg-gray-100 border border-gray-300">Mother Name</th>
-                                <th class="py-2 px-3 bg-gray-100 border border-gray-300">Mother CNIC</th>
+                                <th class="py-2 px-3 bg-gray-100 border border-gray-300">Mother/Guardian Name</th>
+                                {{--<th class="py-2 px-3 bg-gray-100 border border-gray-300">Mother CNIC</th>--}}
                                 <th class="py-2 px-3 bg-gray-100 border border-gray-300" style="width: 130px !important">Action</th>
                             </tr>
                             </thead>
@@ -64,6 +65,7 @@
                             <tr class="border-b border-gray-200 {{ $bg }} hover:bg-gray-100">
                                 <td class="p-2 border border-gray-300">{{ $loop->iteration }}</td>
                                 <td class="p-2 border border-gray-300">{{ $ap->form_number }}</td>
+                                <td class="p-2 border border-gray-300">{{ $ap->admission_number }}</td>
                                 <td class="p-2 border border-gray-300">{{ $ap->applyingGrade->title ?? '' }}</td>
                                 <td class="p-2 border border-gray-300">{{ $ap->section->title ?? '' }}</td>
                                 <td class="p-2 border border-gray-300">{{ $ap->name }}</td>
@@ -71,7 +73,7 @@
                                 <td class="p-2 border border-gray-300">{{ $ap->father_cnic }}</td>
                                 <td class="p-2 border border-gray-300">{{ $ap->father_cell_phone }}</td>
                                 <td class="p-2 border border-gray-300">{{ $ap->mother_name }}</td>
-                                <td class="p-2 border border-gray-300">{{ $ap->mother_cnic }}</td>
+                                {{--<td class="p-2 border border-gray-300">{{ $ap->mother_cnic }}</td>--}}
                                 <td class="p-2 border border-gray-300 align-center">
 
                                     <a href="{{ route('applicant.applicant-profile', ['id' => \Illuminate\Support\Facades\Crypt::encrypt($ap->id)]) }}" class="py-1 px-2 bg-green-400 text-white inline-block">

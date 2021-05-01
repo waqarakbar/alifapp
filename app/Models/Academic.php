@@ -16,7 +16,8 @@ class Academic extends Model
         'school',
         'from_date',
         'to_date',
-        'address'
+        'address',
+        'slc_received'
     ];
 
     public function applicant(){

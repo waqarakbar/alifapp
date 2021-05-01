@@ -209,6 +209,7 @@ class ApplicantsController extends Controller
                 'from_date' => $request->get('from_date'),
                 'to_date' => $request->get('to_date'),
                 'address' => $request->get('address'),
+                'slc_received' => $request->get('slc_received'),
             ];
 
             $applicant->academics()->create($newAcademicFields);
