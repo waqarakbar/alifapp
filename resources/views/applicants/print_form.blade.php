@@ -461,7 +461,7 @@
 
             <table class="border-ccc" style="margin: 0 auto !important">
                 <tr>
-                    <td class="border-ccc"><span class="visibility-hidden">Work Phone No: </span></td>
+                    <td class="border-ccc"><span class="visibility-hidden">Work Phone/whatsapp No: </span></td>
                     <td class="border-ccc"><span class="visibility-hidden">Cell Phone No: </span></td>
                     <td class="border-ccc" style="width:240px"><span class="visibility-hidden">Email Address: </span>
                     </td>
